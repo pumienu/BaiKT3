@@ -4,12 +4,10 @@ using namespace std;
 bool IsOperator(char c) {
     return c == '+' || c == '-' || c == '*';
 }
-
 class Calulator
 {
 private:
     string expression;
-
 public:
     Calulator(string str) : expression(str) {}
     void preprocessing()
@@ -25,7 +23,6 @@ public:
             if(expression[loc]=='-') expression.erase(loc, 1);
             expression.erase(expression.find(')',loc), 1);
         }
-        //cout<<expression<<endl;
     }
     string infixToPostfix()
     {
@@ -43,7 +40,7 @@ public:
                 {
                     postfix += expression[++i];
                 }
-                postfix += ' '; // Thêm dấu cách để phân biệt các số
+                postfix += ' ';
             }
             else if (operators.find(c) != string::npos)
             {
@@ -109,7 +106,7 @@ public:
                 switch (c)
                 {
                 case '+':
-y += x;
+                    y += x;
                     break;
                 case '-':
                     y -= x;
@@ -135,7 +132,6 @@ int main()
     Calulator ex(str);
     ex.preprocessing();
     string postfix = ex.infixToPostfix();
-    //cout << postfix << endl;
     cout << ex.EvaluatePostfix(postfix) << endl;
 
     return 0;
